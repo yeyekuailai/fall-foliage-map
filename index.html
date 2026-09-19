@@ -1,17 +1,12 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Autumn Atlas · America in Color</title><meta name="description" content="Explore ten autumn tree species, historical forest abundance, city outlines and live weather."><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23151c1b'/%3E%3Cpath d='M8 23Q5 8 25 6Q27 23 8 23M8 26L21 11' stroke='%23e9a65a' fill='none' stroke-width='2'/%3E%3C/svg%3E"><link rel="stylesheet" href="leaflet.css"><link rel="stylesheet" href="style.css"></head><body>
+<div id="map" aria-label="Interactive U.S. autumn forest map with city-level overview"></div><div class="map-shade"></div>
+<header><a class="brand" href="./"><span class="leaf">❧</span><span>Autumn Atlas<small>AMERICA IN COLOR</small></span></a><form id="searchForm" role="search"><span>⌕</span><input id="search" placeholder="City, State · e.g. Portland, OR" aria-label="Search cities in the contiguous United States" autocomplete="off"><button aria-label="Search">↵</button><div id="searchResults" hidden role="status"></div></form><div class="header-actions"><section class="species-panel"><button id="speciesToggle" class="species-heading" aria-expanded="false" aria-controls="speciesBody">Species <span id="selectedCount">10 / 10</span><span>⌄</span></button><div id="speciesBody" hidden><div class="select-actions"><button id="allSpecies">All</button><button id="noSpecies">None</button><span>Select species · Click a name for details</span></div><div id="speciesList"></div></div></section><button id="about" class="text-btn">Data & Models ↗</button></div></header>
+<section class="date"><div class="eyebrow">A FOREST IN EVERY SEASON.</div><span>Day <b id="dayNo">36</b> of autumn</span><h1 id="dateTitle">Oct 15</h1><p id="seasonText">Watch the forest change, one day at a time.</p><div class="model-tag">Historical abundance · Illustrative trees</div></section>
 
-🍂 美国秋色与植物分布动态地图
-探索树种分布与秋叶变色全过程
-
-秋色指数 (Foliage Stage)
-绿叶
-早期
-接近高峰
-最佳观赏期
-落叶
-
-
-▶ 自动播放整个秋天 🗺 看美国全图 ☁ 天气层: 关 ⚙ 设置
-09 月 01 日
-
-树种与图层设置
-糖枫 (Sugar Maple) 颤杨 (Quaking Aspen) 纸皮桦 (Paper Birch) 确定
+<div class="map-tools"><button id="zoomIn" aria-label="Zoom in">＋</button><button id="zoomOut" aria-label="Zoom out">−</button></div>
+<div class="map-status"><span id="scaleLabel">Across America</span><span id="dataStatus" role="status">Loading the forest…</span></div>
+<aside id="panel" hidden aria-label="Details"></aside>
+<div class="bottom-context"><div class="legend"><span id="legendTitle">A season in color</span><div class="color-bar"></div><div class="legend-labels"><span>Green</span><span>Gold</span><span>Red</span><span>Leaf fall</span></div></div><div class="location-chip"><span id="locationName">Burlington · Vermont</span><button id="locateSelected">Locate ↗</button></div></div>
+<footer><section class="timeline" id="timeline"><div class="timeline-head"><span>Follow the fall <small>2026 / 09 — 11</small></span><span id="dateSmall">Oct 15</span></div><input type="range" min="0" max="90" value="44" id="dateRange" aria-label="Choose an autumn date"><div class="ticks"><span>Sep 1</span><span>Sep 15</span><span>Oct 1</span><span>Oct 15</span><span>Nov 1</span><span>Nov 15</span><span>Nov 30</span></div></section><nav><button id="play" class="play" aria-pressed="false"><span id="playIcon">▶</span><span id="playLabel">Play autumn</span></button><div class="nav-right"><button id="timelineToggle" aria-pressed="true">◷ <span>Timeline</span></button><button id="reset">◎ <span>America</span></button><button id="weather">☀ <span>Weather</span></button><button id="forecast">◈ <span>Foliage forecast</span></button><button id="settings">⚙ <span>Settings</span></button></div></nav></footer>
+<dialog id="forecastDialog"><div class="dialog-head"><div><small>EXTERNAL FORECAST</small><h2>Third-party foliage forecast</h2></div><button id="closeForecast" aria-label="Close forecast">×</button></div><p>Explore Fall’s original map. Its forecast dates and updates are independent of this site’s historical model.</p><div id="forecastFrame"></div><div class="source-links"><a href="https://www.explorefall.com/fall-foliage-map" target="_blank" rel="noopener noreferrer">Open original map ↗</a><a id="localForecastLink" href="https://www.explorefall.com/fall-foliage-forecast" target="_blank" rel="noopener noreferrer">Forecast for this location ↗</a><a href="https://www.usanpn.org/data" target="_blank" rel="noopener noreferrer">USA-NPN observations ↗</a><a href="https://smokymountains.com/fall-foliage-map" target="_blank" rel="noopener noreferrer">SmokyMountains ↗</a></div></dialog>
+<script src="leaflet.js"></script><script src="topojson.min.js"></script><script src="model.js"></script><script src="forest.js"></script><script src="city-search.js"></script><script src="app.js"></script></body></html>
